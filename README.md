@@ -1,4 +1,4 @@
-Music catalog will be obtained from Spotify.
+Music catalog using Spotiyf API.
 
 Steps:
 - Authorization screen
