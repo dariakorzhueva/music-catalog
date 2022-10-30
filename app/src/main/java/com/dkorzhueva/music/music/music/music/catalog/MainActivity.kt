@@ -16,6 +16,7 @@ import androidx.compose.material.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import com.dkorzhueva.music.music.music.music.catalog.authorization.authorization_screen.ui.Authorization
 
 class MainActivity : BaseActivity<MainActComponent>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,38 +42,5 @@ class MainActivity : BaseActivity<MainActComponent>() {
 
     override fun injectView(component: MainActComponent?) {
         component?.inject(this)
-    }
-}
-
-@Composable
-fun Authorization() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        val roundPercent = 50
-        Button(
-            shape = RoundedCornerShape(roundPercent),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = colorResource(R.color.spotify_color),
-                contentColor = Color.White
-            ),
-            onClick = {
-
-            })
-        {
-            Text(stringResource(R.string.authorization_authorizeViaSpotify))
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AuthorizationPreview() {
-    MusiccatalogTheme {
-        Authorization()
     }
 }

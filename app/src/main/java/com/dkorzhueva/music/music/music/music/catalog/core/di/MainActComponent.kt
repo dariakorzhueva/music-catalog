@@ -1,6 +1,7 @@
 package com.dkorzhueva.music.music.music.music.catalog.core.di
 
 import com.dkorzhueva.music.music.music.music.catalog.MainActivity
+import com.dkorzhueva.music.music.music.music.catalog.authorization.authorization_screen.di.AuthorizationFrComponent
 import dagger.Subcomponent
 
 @ActivityScope
@@ -14,4 +15,6 @@ interface MainActComponent {
     }
 
     fun inject(activity: MainActivity)
+
+    fun authorizationFrComponent(): AuthorizationFrComponent.Factory
 }
