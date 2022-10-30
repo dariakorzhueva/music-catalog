@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">music-catalog</string>
+    <string name="app_name">Music Catalog</string>
+    <string name="authorization.authorizeViaSpotify">Authorize via Spotify</string>
 </resources>
