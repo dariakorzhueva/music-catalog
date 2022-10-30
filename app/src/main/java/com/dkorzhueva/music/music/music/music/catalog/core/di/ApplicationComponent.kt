@@ -7,9 +7,12 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        ApplicationModule::class
+        ApplicationModule::class,
+        SubcomponentsModule::class
     ]
 )
 interface ApplicationComponent {
     fun context(): Context
+
+    fun mainActComponent(): MainActComponent.Factory
 }
