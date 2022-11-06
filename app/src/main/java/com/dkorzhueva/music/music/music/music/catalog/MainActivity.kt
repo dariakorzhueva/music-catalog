@@ -1,18 +1,22 @@
 package com.dkorzhueva.music.music.music.music.catalog
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dkorzhueva.music.music.music.music.catalog.core.BaseActivity
 import com.dkorzhueva.music.music.music.music.catalog.core.di.MainActComponent
 import com.dkorzhueva.music.music.music.music.catalog.ui.theme.MusiccatalogTheme
+import android.content.Context
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import com.dkorzhueva.music.music.music.music.catalog.authorization.authorization_screen.ui.Authorization
 
 class MainActivity : BaseActivity<MainActComponent>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +27,7 @@ class MainActivity : BaseActivity<MainActComponent>() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    MusicCatalogApp()
                 }
             }
         }
@@ -38,18 +42,5 @@ class MainActivity : BaseActivity<MainActComponent>() {
 
     override fun injectView(component: MainActComponent?) {
         component?.inject(this)
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MusiccatalogTheme {
-        Greeting("Android")
     }
 }

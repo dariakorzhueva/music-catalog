@@ -1,28 +1,30 @@
 buildscript {
     ext {
-        kotlin_version = '1.7.20'
-        version_compose = '1.2.1'
-        version_compose_activity = '1.5.1'
-        version_compose_viewmodel = '2.5.1'
-        version_dagger2 = '2.42'
-        version_room = '2.2.5'
-        version_lifecycle = '2.2.0'
+        kotlin_version_version = '1.7.20'
+        compose_version = '1.2.1'
+        compose_activity_version = '1.5.1'
+        compose_viewmodel_version = '2.5.1'
+        dagger2_version = '2.42'
+        room_version = '2.2.5'
+        lifecycle_version = '2.2.0'
+        nav_version = '2.5.3'
 
         deps = [
-                composeActivity     : "androidx.activity:activity-compose:$version_compose_activity",
-                composeFoundation   : "androidx.compose.foundation:foundation:$version_compose",
-                composeMaterial     : "androidx.compose.material:material:$version_compose",
-                composeIconsCore    : "androidx.compose.material:material-icons-core:$version_compose",
-                composeIconsExtended: "androidx.compose.material:material-icons-extended:$version_compose",
-                composeViewModel    : "androidx.lifecycle:lifecycle-viewmodel-compose:$version_compose_viewmodel",
-                composeUi           : "androidx.compose.ui:ui:$version_compose",
-                composeUiTooling    : "androidx.compose.ui:ui-tooling:$version_compose",
-                dagger              : "com.google.dagger:dagger:$version_dagger2",
-                daggerCompiler      : "com.google.dagger:dagger-compiler:$version_dagger2",
-                room                : "androidx.room:room-runtime:$version_room",
-                roomCompiler        : "androidx.room:room-compiler:$version_room",
-                roomKtx             : "androidx.room:room-ktx:$version_room",
-                viewModelKtx        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle"
+                composeActivity     : "androidx.activity:activity-compose:$compose_activity_version",
+                composeFoundation   : "androidx.compose.foundation:foundation:$compose_version",
+                composeMaterial     : "androidx.compose.material:material:$compose_version",
+                composeIconsCore    : "androidx.compose.material:material-icons-core:$compose_version",
+                composeIconsExtended: "androidx.compose.material:material-icons-extended:$compose_version",
+                composeNavigation   : "androidx.navigation:navigation-compose:$nav_version",
+                composeViewModel    : "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel_version",
+                composeUi           : "androidx.compose.ui:ui:$compose_version",
+                composeUiTooling    : "androidx.compose.ui:ui-tooling:$compose_version",
+                dagger              : "com.google.dagger:dagger:$dagger2_version",
+                daggerCompiler      : "com.google.dagger:dagger-compiler:$dagger2_version",
+                room                : "androidx.room:room-runtime:$room_version",
+                roomCompiler        : "androidx.room:room-compiler:$room_version",
+                roomKtx             : "androidx.room:room-ktx:$room_version",
+                viewModelKtx        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
         ]
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
