@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<MainActComponent>() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Authorization()
+                    MusicCatalogApp()
                 }
             }
         }
