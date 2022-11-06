@@ -16,10 +16,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.dkorzhueva.music.music.music.music.catalog.R
+import com.dkorzhueva.music.music.music.music.catalog.authorization.authorization_screen.AuthorizationViewModel
 import com.dkorzhueva.music.music.music.music.catalog.ui.theme.MusiccatalogTheme
 
 @Composable
-fun Authorization() {
+fun Authorization(
+    viewModel: AuthorizationViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,13 +43,5 @@ fun Authorization() {
         {
             Text(stringResource(R.string.authorization_authorizeViaSpotify))
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AuthorizationPreview() {
-    MusiccatalogTheme {
-        Authorization()
     }
 }
