@@ -1,4 +1,4 @@
-package com.dkorzhueva.music.music.music.music.catalog.web
+package com.dkorzhueva.music.catalog.web
 
 import retrofit2.http.POST
 

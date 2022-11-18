@@ -1,4 +1,4 @@
-package com.dkorzhueva.music.music.music.music.catalog.core
+package com.dkorzhueva.music.catalog.core
 
 enum class Screen(val route: String) {
     Authorization("auth")

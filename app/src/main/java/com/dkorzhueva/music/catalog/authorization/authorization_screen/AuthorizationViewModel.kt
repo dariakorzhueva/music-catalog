@@ -1,4 +1,4 @@
-package com.dkorzhueva.music.music.music.music.catalog.authorization.authorization_screen
+package com.dkorzhueva.music.catalog.authorization.authorization_screen
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
