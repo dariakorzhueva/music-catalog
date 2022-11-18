@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.dkorzhueva.music.music.music.music.catalog"
+        applicationId "com.dkorzhueva.music.catalog"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -72,6 +73,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation deps.okHttp
+
     implementation deps.hilt
     kapt deps.hiltCompiler
+
+    implementation deps.retrofit
 }
