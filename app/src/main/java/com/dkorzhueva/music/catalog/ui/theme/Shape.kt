@@ -1,4 +1,4 @@
-package com.dkorzhueva.music.music.music.music.catalog.ui.theme
+package com.dkorzhueva.music.catalog.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

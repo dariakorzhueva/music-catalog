@@ -1,6 +1,6 @@
-package com.dkorzhueva.music.music.music.music.catalog.web
+package com.dkorzhueva.music.catalog.web
 
-import com.dkorzhueva.music.music.music.music.catalog.BuildConfig
+import com.dkorzhueva.music.catalog.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
