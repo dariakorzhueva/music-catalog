@@ -8,6 +8,7 @@ buildscript {
         lifecycle_version = '2.2.0'
         nav_version = '2.5.3'
         hilt_version = '2.44'
+        okHttp_version = '4.10.0'
 
         deps = [
                 composeActivity     : "androidx.activity:activity-compose:$compose_activity_version",
@@ -19,8 +20,9 @@ buildscript {
                 composeViewModel    : "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel_version",
                 composeUi           : "androidx.compose.ui:ui:$compose_version",
                 composeUiTooling    : "androidx.compose.ui:ui-tooling:$compose_version",
-                hilt: "com.google.dagger:hilt-android:$hilt_version",
-                hiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                hilt                : "com.google.dagger:hilt-android:$hilt_version",
+                hiltCompiler        : "com.google.dagger:hilt-compiler:$hilt_version",
+                okHttp              : "com.squareup.okhttp3:okhttp:$okHttp_version",
                 room                : "androidx.room:room-runtime:$room_version",
                 roomCompiler        : "androidx.room:room-compiler:$room_version",
                 roomKtx             : "androidx.room:room-ktx:$room_version",
@@ -33,4 +35,5 @@ plugins {
     id 'com.android.library' version '7.3.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
     id 'com.google.dagger.hilt.android' version '2.44' apply false
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
