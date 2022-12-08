@@ -29,10 +29,10 @@
                 android:value="" />
         </activity>
         <meta-data
-            android:name = "clientId"
-            android:value = "${CLIENT_ID}"/>
+            android:name = "apiKey"
+            android:value = "${API_KEY}"/>
         <meta-data
-            android:name = "clientSecret"
-            android:value = "${CLIENT_SECRET}"/>
+            android:name = "sharedSecret"
+            android:value = "${SHARED_SECRET}"/>
     </application>
 </manifest>
