@@ -14,19 +14,16 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
         .connectTimeout(15, TimeUnit.SECONDS)
         .build()
 
-    //Investigate 404
-    //Fix providing storage in the view model
-
     override fun authorize(username: String, password: String) {
-        val secret = "mysecret"
         val apiSignature =
-            "api_key" + BuildConfig.API_KEY + "methodauth.getMobileSessionpassword" + password + "username" + username + secret
+            "api_key" + BuildConfig.API_KEY + "methodauth.getMobileSessionpassword" + password + "username" + username + BuildConfig.SHARED_SECRET
+
         val codedString = getCodedString(apiSignature)
 
         val urlParameter =
             "method=auth.getMobileSession&api_key=" + BuildConfig.API_KEY + "&password=" + password + "&username=" + username + "&api_sig=" + codedString
         val request: Request = Request.Builder()
-            .url("https://ws.audioscrobbler.com/2.0/$urlParameter")
+            .url("https://ws.audioscrobbler.com/2.0/?$urlParameter")
             .post(RequestBody.create(null, ByteArray(0))).build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -44,17 +41,17 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
     }
 
     private fun getCodedString(apiSignature: String): String {
-        val digest: MessageDigest = MessageDigest.getInstance("MD5")
+        val hexString = StringBuilder()
+        val digest = MessageDigest
+            .getInstance("MD5")
         digest.update(apiSignature.toByteArray())
-        val messageDigest: ByteArray = digest.digest()
+        val messageDigest = digest.digest()
+        for (aMessageDigest in messageDigest) {
+            var h = Integer.toHexString(0xFF and aMessageDigest.toInt())
+            while (h.length < 2) h = "0$h"
+            hexString.append(h)
+        }
 
-        val hexString = StringBuffer()
-        for (i in messageDigest.indices) hexString.append(
-            Integer.toHexString(
-                0xFF and messageDigest[i]
-                    .toInt()
-            )
-        )
         return hexString.toString()
     }
 }
