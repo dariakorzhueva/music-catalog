@@ -24,7 +24,8 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
             "method=auth.getMobileSession&api_key=" + BuildConfig.API_KEY + "&password=" + password + "&username=" + username + "&api_sig=" + codedString
         val request: Request = Request.Builder()
             .url("https://ws.audioscrobbler.com/2.0/?$urlParameter")
-            .post(RequestBody.create(null, ByteArray(0))).build()
+            .post(RequestBody.create(null, ByteArray(0)))
+            .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -42,8 +43,7 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
 
     private fun getCodedString(apiSignature: String): String {
         val hexString = StringBuilder()
-        val digest = MessageDigest
-            .getInstance("MD5")
+        val digest = MessageDigest.getInstance("MD5")
         digest.update(apiSignature.toByteArray())
         val messageDigest = digest.digest()
         for (aMessageDigest in messageDigest) {

@@ -1,11 +1,13 @@
 package com.dkorzhueva.music.catalog.web
 
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AuthApi {
-//    @POST
-//    fun authorize(): AuthResponse
+    @POST("?method=auth.getMobileSession")
+    fun authorize(
+        @Query("api_key") apiKey: String,
+        @Query("password") password: String,
+        @Query("username") username: String,
+        @Query("api_sig") apiSig: String
+    ): AuthResponse
 }
