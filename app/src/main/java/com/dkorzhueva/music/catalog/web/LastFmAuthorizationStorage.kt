@@ -4,9 +4,11 @@ import com.dkorzhueva.music.catalog.BuildConfig
 import okhttp3.*
 import java.io.IOException
 import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 @Singleton
 class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
@@ -41,17 +43,24 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
         })
     }
 
-    private fun getCodedString(apiSignature: String): String {
-        val hexString = StringBuilder()
-        val digest = MessageDigest.getInstance("MD5")
-        digest.update(apiSignature.toByteArray())
-        val messageDigest = digest.digest()
-        for (aMessageDigest in messageDigest) {
-            var h = Integer.toHexString(0xFF and aMessageDigest.toInt())
-            while (h.length < 2) h = "0$h"
-            hexString.append(h)
-        }
+    private fun getCodedString(string: String): String {
+        val MD5 = "MD5"
+        try {
+            val digest = MessageDigest
+                .getInstance(MD5)
+            digest.update(string.toByteArray())
+            val messageDigest = digest.digest()
 
-        return hexString.toString()
+            val hexString = StringBuilder()
+            for (aMessageDigest in messageDigest) {
+                var h = Integer.toHexString(0xFF and aMessageDigest.toInt())
+                while (h.length < 2) h = "0$h"
+                hexString.append(h)
+            }
+            return hexString.toString()
+        } catch (e: NoSuchAlgorithmException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 }
