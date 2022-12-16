@@ -11,6 +11,7 @@ buildscript {
         okHttp_version = '4.10.0'
         retrofit_version = '2.7.0'
         simple_xml_version = '2.3.0'
+        logging_interceptor_version = '4.10.0'
 
         deps = [
                 composeActivity     : "androidx.activity:activity-compose:$compose_activity_version",
@@ -26,7 +27,7 @@ buildscript {
                 hiltCompiler        : "com.google.dagger:hilt-compiler:$hilt_version",
                 okHttp              : "com.squareup.okhttp3:okhttp:$okHttp_version",
                 retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
-                retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                loggingInterceptor  : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version",
                 simpleXml           : "com.squareup.retrofit2:converter-simplexml:$simple_xml_version",
                 room                : "androidx.room:room-runtime:$room_version",
                 roomCompiler        : "androidx.room:room-compiler:$room_version",
