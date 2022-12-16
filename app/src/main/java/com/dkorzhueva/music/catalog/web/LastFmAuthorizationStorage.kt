@@ -1,48 +1,24 @@
 package com.dkorzhueva.music.catalog.web
 
 import com.dkorzhueva.music.catalog.BuildConfig
-import okhttp3.*
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory
-import java.io.IOException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
+class LastFmAuthorizationStorage @Inject constructor(
+    private val musicApiFactory: MusicApiFactory
+) : AuthorizationStorage {
     //Split by classes
 
-    private fun getHttpClient(): OkHttpClient{
-        val logging = HttpLoggingInterceptor()
-        logging.apply {
-            logging.level = HttpLoggingInterceptor.Level.BODY
-        }
-        val client = OkHttpClient.Builder()
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor(logging)
-            .build()
-        return client
-    }
-
-    private fun <T> createApiService(service: Class<T>, httpClient: OkHttpClient, path: String): T {
-        return Retrofit.Builder()
-            .baseUrl(path)
-            .addConverterFactory(SimpleXmlConverterFactory.create())
-            .client(httpClient)
-            .build()
-            .create(service)
-    }
-
     override suspend fun authorize(username: String, password: String) {
-        val api =
-            createApiService(AuthApi::class.java, getHttpClient(), "https://ws.audioscrobbler.com/2.0/")
-        val apiSignature =
-            "api_key" + BuildConfig.API_KEY + "methodauth.getMobileSessionpassword" + password + "username" + username + BuildConfig.SHARED_SECRET
+        val api = musicApiFactory.create(
+            AuthApi::class.java,
+            MusicHttpClient.create(),
+            "https://ws.audioscrobbler.com/2.0/"
+        )
+        val apiSignature = "api_key" + BuildConfig.API_KEY + "methodauth.getMobileSessionpassword" + password + "username" + username + BuildConfig.SHARED_SECRET
 
         val codedString = getCodedString(apiSignature)
 
