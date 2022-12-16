@@ -3,9 +3,8 @@ package com.dkorzhueva.music.catalog.web
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
-class SpotifyClient {
+class LastFmAuthClient {
     private val client = OkHttpClient.Builder()
         .connectTimeout(15, TimeUnit.SECONDS)
-        .addInterceptor(AuthInterceptor())
         .build()
 }

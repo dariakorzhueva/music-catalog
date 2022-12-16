@@ -79,4 +79,6 @@ dependencies {
     kapt deps.hiltCompiler
 
     implementation deps.retrofit
+    implementation deps.simpleXml
+    implementation deps.loggingInterceptor
 }
