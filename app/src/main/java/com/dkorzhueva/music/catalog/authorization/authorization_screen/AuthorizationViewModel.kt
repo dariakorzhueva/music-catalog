@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthorizationViewModel @Inject constructor(
-    private val authorizationStorage: LastFmAuthorizationStorage
+    private val authorizationStorage: AuthorizationStorage
 ) : ViewModel() {
     fun authorize(username: String, password: String) {
         viewModelScope.launch {
