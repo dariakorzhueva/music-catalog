@@ -4,7 +4,7 @@ import retrofit2.http.*
 
 interface AuthApi {
     @POST("?method=auth.getMobileSession")
-    fun authorize(
+   suspend fun authorize(
         @Query("api_key") apiKey: String,
         @Query("password") password: String,
         @Query("username") username: String,
