@@ -1,5 +1,5 @@
-Music catalog using Spotiyf API.
+Music catalog using Last.fm API.
 
 Steps:
-- Authorization screen
-- User authorization
+- User authorization - save received api key to get user's info later
+- Main screen with top tracks, albums and artists 
