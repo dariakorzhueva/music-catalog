@@ -47,7 +47,7 @@ class LastFmAuthorizationStorage @Inject constructor() : AuthorizationStorage {
         val codedString = getCodedString(apiSignature)
 
         try {
-            val result = api.authorize(BuildConfig.API_KEY, password, username, codedString)
+            val result = api.authorize(BuildConfig.API_KEY, username, password, codedString)
         } catch (ex: Exception) {
             println(ex.stackTrace)
         }
