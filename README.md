@@ -1,4 +1,5 @@
 Music catalog using Last.fm API.
+
 Stack:
 Jetpack Compose, Hilt, Room.
 
