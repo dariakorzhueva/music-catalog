@@ -7,12 +7,12 @@ import androidx.room.Query
 
 @Dao
 interface UsersDao {
-    @Query("SELECT * FROM users WHERE id LIKE :id")
-    fun getUserById(id: String): List<UserEntity>
+    @Query("SELECT * FROM user WHERE id LIKE :id")
+    fun getUserById(id: String): List<User>
 
     @Insert
-    fun insert(user: UserEntity)
+    fun insert(user: User)
 
     @Delete
-    fun delete(user: UserEntity)
+    fun delete(user: User)
 }

@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DatabaseModule {
+class DatabaseModule {
     @Provides
     fun bindUsersDatabase(
         @ApplicationContext context: Context
