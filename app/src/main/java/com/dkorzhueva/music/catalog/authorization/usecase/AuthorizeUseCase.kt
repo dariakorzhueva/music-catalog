@@ -11,16 +11,21 @@ class AuthorizeUseCase @Inject constructor(
     private val authResponseMapper: AuthResponseMapper,
     private val authorizationStorage: AuthorizationStorage,
     private val userDatabase: UserDao
-) : UseCase<AuthorizeInput, Unit>() {
+) : UseCase<AuthorizeInput, Boolean>() {
 
-    override suspend fun process(input: AuthorizeInput): Result<Unit> {
+    override suspend fun process(input: AuthorizeInput): Result<Boolean> {
         val authResponse = authorizationStorage.authorize(input.username, input.password)
         val user = authResponse?.let {
             authResponseMapper.mapToEntity(it)
         }
         user?.let {
-            userDatabase.insert(user)
+            val oldUser = userDatabase.getUserByApiKey(user.apiKey)
+            if (oldUser == null) {
+                userDatabase.insert(user)
+            }
         }
-        return Result.success(Unit)
+
+        val userExists = user != null
+        return Result.success(userExists)
     }
 }

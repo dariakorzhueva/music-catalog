@@ -20,9 +20,16 @@ class AuthorizationViewModel @Inject constructor(
                     password = password
                 ),
                 onSuccess = {
-                    //Move to the next screen
+                    val userExists = it ?: false
+                    if (userExists) {
+                        //Move to the next screen
+                    } else {
+                        //Show error
+                    }
                 },
-                onError = {}
+                onError = {
+                    //Catch no network - show snackbar
+                }
             )
         }
     }

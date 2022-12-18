@@ -12,7 +12,7 @@ abstract class UseCase<T, R>(
 
     suspend fun execute(
         input: T,
-        onSuccess: () -> Unit,
+        onSuccess: (result: R?) -> Unit,
         onError: (error: Throwable?) -> Unit
     ) {
         val job = coroutineScope {
@@ -24,7 +24,7 @@ abstract class UseCase<T, R>(
             try {
                 val result = job.await()
                 if (result.isSuccess) {
-                    onSuccess()
+                    onSuccess(result.getOrNull())
                 } else {
                     onError(result.exceptionOrNull())
                 }
