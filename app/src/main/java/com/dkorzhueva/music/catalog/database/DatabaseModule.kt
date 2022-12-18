@@ -20,6 +20,6 @@ class DatabaseModule {
             context,
             AppDatabase::class.java, "music-catalog-database"
         ).build()
-        return db.usersDao()
+        return db.userDao()
     }
 }

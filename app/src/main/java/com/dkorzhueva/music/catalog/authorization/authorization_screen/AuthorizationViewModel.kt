@@ -2,18 +2,24 @@ package com.dkorzhueva.music.catalog.authorization.authorization_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dkorzhueva.music.catalog.web.auth.AuthorizationStorage
+import com.dkorzhueva.music.catalog.authorization.usecase.AuthorizeUseCase
+import com.dkorzhueva.music.catalog.authorization.usecase.input.AuthorizeInput
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthorizationViewModel @Inject constructor(
-    private val authorizationStorage: AuthorizationStorage
+    private val authorizeUseCase: AuthorizeUseCase
 ) : ViewModel() {
     fun authorize(username: String, password: String) {
         viewModelScope.launch {
-            authorizationStorage.authorize(username, password)
+            authorizeUseCase.process(
+                AuthorizeInput(
+                    username = username,
+                    password = password
+                )
+            )
         }
     }
 }
