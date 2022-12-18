@@ -1,7 +1,9 @@
-package com.dkorzhueva.music.catalog.web
+package com.dkorzhueva.music.catalog.web.auth
 
 import com.dkorzhueva.music.catalog.BuildConfig
 import com.dkorzhueva.music.catalog.algorithm.Md5Algorithm
+import com.dkorzhueva.music.catalog.web.MusicApiFactory
+import com.dkorzhueva.music.catalog.web.MusicHttpClient
 import com.dkorzhueva.music.catalog.web.ServerUrl.LAST_FM_SERVER_URL
 import javax.inject.Inject
 import javax.inject.Singleton
