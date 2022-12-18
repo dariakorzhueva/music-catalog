@@ -2,7 +2,7 @@ package com.dkorzhueva.music.catalog.database
 
 import android.content.Context
 import androidx.room.Room
-import com.dkorzhueva.music.catalog.database.user.UsersDao
+import com.dkorzhueva.music.catalog.database.user.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ class DatabaseModule {
     @Provides
     fun bindUsersDatabase(
         @ApplicationContext context: Context
-    ): UsersDao {
+    ): UserDao {
         val db = Room.databaseBuilder(
             context,
             AppDatabase::class.java, "music-catalog-database"

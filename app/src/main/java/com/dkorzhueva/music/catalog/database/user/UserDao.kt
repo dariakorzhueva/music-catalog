@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface UsersDao {
+interface UserDao {
     @Query("SELECT * FROM user WHERE id LIKE :id")
     fun getUserById(id: String): List<User>
 
