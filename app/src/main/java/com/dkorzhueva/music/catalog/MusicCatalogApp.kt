@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dkorzhueva.music.catalog.authorization.authorization_screen.AuthorizationViewModel
 import com.dkorzhueva.music.catalog.authorization.authorization_screen.ui.Authorization
-import com.dkorzhueva.music.catalog.core.Screen
+import com.dkorzhueva.music.catalog.core.ui.Screen
 
 @Composable
 fun MusicCatalogApp(viewModel: AuthorizationViewModel) {

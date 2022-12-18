@@ -3,8 +3,9 @@ package com.dkorzhueva.music.catalog.web
 import com.dkorzhueva.music.catalog.BuildConfig
 import com.dkorzhueva.music.catalog.algorithm.Md5Algorithm
 import com.dkorzhueva.music.catalog.web.ServerUrl.LAST_FM_SERVER_URL
-import com.dkorzhueva.music.catalog.web.auth.LastFmApi
+import com.dkorzhueva.music.catalog.web.auth.AuthResponse
 import com.dkorzhueva.music.catalog.web.auth.AuthorizationStorage
+import com.dkorzhueva.music.catalog.web.auth.LastFmApi
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,7 +15,7 @@ class LastFmAuthorizationStorage @Inject constructor(
     private val musicApiFactory: MusicApiFactory
 ) : AuthorizationStorage {
 
-    override suspend fun authorize(username: String, password: String) {
+    override suspend fun authorize(username: String, password: String): AuthResponse? {
         val api = musicApiFactory.create(
             LastFmApi::class.java,
             MusicHttpClient.create(),
@@ -25,12 +26,10 @@ class LastFmAuthorizationStorage @Inject constructor(
 
         val codedString = md5Algorithm.encode(apiSignature)
 
-        try {
-            //Save api key to pull users info later
-            //Hide password under dots
-            val result = api.authorize(BuildConfig.API_KEY, username, password, codedString)
+        return try {
+            api.authorize(BuildConfig.API_KEY, username, password, codedString)
         } catch (ex: Exception) {
-            println(ex.stackTrace)
+            null
         }
     }
 }
