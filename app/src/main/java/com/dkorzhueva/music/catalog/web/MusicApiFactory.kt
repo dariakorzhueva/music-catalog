@@ -1,5 +1,6 @@
 package com.dkorzhueva.music.catalog.web
 
+import com.dkorzhueva.music.catalog.web.auth.AuthApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory

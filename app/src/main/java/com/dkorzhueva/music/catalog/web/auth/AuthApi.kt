@@ -1,4 +1,4 @@
-package com.dkorzhueva.music.catalog.web
+package com.dkorzhueva.music.catalog.web.auth
 
 import retrofit2.http.*
 
