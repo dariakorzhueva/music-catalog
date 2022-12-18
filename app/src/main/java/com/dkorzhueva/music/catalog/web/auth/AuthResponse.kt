@@ -1,6 +1,6 @@
-package com.dkorzhueva.music.catalog.web
+package com.dkorzhueva.music.catalog.web.auth
 
-import org.simpleframework.xml.Attribute
+import com.dkorzhueva.music.catalog.web.SessionEntity
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 

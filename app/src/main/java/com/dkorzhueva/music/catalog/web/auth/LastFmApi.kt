@@ -1,8 +1,8 @@
-package com.dkorzhueva.music.catalog.web
+package com.dkorzhueva.music.catalog.web.auth
 
 import retrofit2.http.*
 
-interface AuthApi {
+interface LastFmApi {
     @POST("?method=auth.getMobileSession")
    suspend fun authorize(
         @Query("api_key") apiKey: String,

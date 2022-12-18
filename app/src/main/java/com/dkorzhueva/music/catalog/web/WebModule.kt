@@ -1,5 +1,6 @@
 package com.dkorzhueva.music.catalog.web
 
+import com.dkorzhueva.music.catalog.web.auth.AuthorizationStorage
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
