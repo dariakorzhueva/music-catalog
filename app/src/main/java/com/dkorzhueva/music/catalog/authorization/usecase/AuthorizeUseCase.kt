@@ -11,8 +11,9 @@ class AuthorizeUseCase @Inject constructor(
     private val authResponseMapper: AuthResponseMapper,
     private val authorizationStorage: AuthorizationStorage,
     private val userDatabase: UserDao
-) : UseCase<AuthorizeInput, Unit> {
-    override suspend fun process(input: AuthorizeInput) {
+) : UseCase<AuthorizeInput, Unit>() {
+
+    override suspend fun process(input: AuthorizeInput): Result<Unit> {
         val authResponse = authorizationStorage.authorize(input.username, input.password)
         val user = authResponse?.let {
             authResponseMapper.mapToEntity(it)
@@ -20,5 +21,6 @@ class AuthorizeUseCase @Inject constructor(
         user?.let {
             userDatabase.insert(user)
         }
+        return Result.success(Unit)
     }
 }

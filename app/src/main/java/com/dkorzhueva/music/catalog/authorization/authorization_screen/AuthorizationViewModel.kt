@@ -14,11 +14,15 @@ class AuthorizationViewModel @Inject constructor(
 ) : ViewModel() {
     fun authorize(username: String, password: String) {
         viewModelScope.launch {
-            authorizeUseCase.process(
+            authorizeUseCase.execute(
                 AuthorizeInput(
                     username = username,
                     password = password
-                )
+                ),
+                onSuccess = {
+                    //Move to the next screen
+                },
+                onError = {}
             )
         }
     }
