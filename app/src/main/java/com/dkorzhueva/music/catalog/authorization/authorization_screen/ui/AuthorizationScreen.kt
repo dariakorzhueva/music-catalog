@@ -25,6 +25,9 @@ import com.dkorzhueva.music.catalog.authorization.authorization_screen.Authoriza
 fun Authorization(
     viewModel: AuthorizationViewModel = hiltViewModel()
 ) {
+    val userExists by viewModel.userExists.collectAsState(false)
+    val internetConnectionError by viewModel.internetConnectionError.collectAsState(false)
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
