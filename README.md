@@ -14,3 +14,4 @@ Steps:
 - Main screen artists section
 - User screen with recent, favorite tracks and albums
 - Listen tracks using Youtube
+- Unify composable functions to reuse them on any screen
