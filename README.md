@@ -4,4 +4,7 @@ Stack:
 Jetpack Compose, Hilt, Room.
 
 Steps:
-- Main screen with top tracks, albums and artists 
+- Navigation
+- Main screen with top tracks section
+- Main screen albums section
+- Main screen artists section
