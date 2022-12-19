@@ -81,4 +81,5 @@ dependencies {
     implementation deps.retrofit
     implementation deps.simpleXml
     implementation deps.loggingInterceptor
+    implementation deps.composeHiltNavigation
 }

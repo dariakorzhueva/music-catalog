@@ -12,27 +12,29 @@ buildscript {
         retrofit_version = '2.7.0'
         simple_xml_version = '2.3.0'
         logging_interceptor_version = '4.10.0'
+        compose_hilt_navigation = '1.0.0'
 
         deps = [
-                composeActivity     : "androidx.activity:activity-compose:$compose_activity_version",
-                composeFoundation   : "androidx.compose.foundation:foundation:$compose_version",
-                composeMaterial     : "androidx.compose.material:material:$compose_version",
-                composeIconsCore    : "androidx.compose.material:material-icons-core:$compose_version",
-                composeIconsExtended: "androidx.compose.material:material-icons-extended:$compose_version",
-                composeNavigation   : "androidx.navigation:navigation-compose:$nav_version",
-                composeViewModel    : "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel_version",
-                composeUi           : "androidx.compose.ui:ui:$compose_version",
-                composeUiTooling    : "androidx.compose.ui:ui-tooling:$compose_version",
-                hilt                : "com.google.dagger:hilt-android:$hilt_version",
-                hiltCompiler        : "com.google.dagger:hilt-compiler:$hilt_version",
-                okHttp              : "com.squareup.okhttp3:okhttp:$okHttp_version",
-                retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
-                loggingInterceptor  : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version",
-                simpleXml           : "com.squareup.retrofit2:converter-simplexml:$simple_xml_version",
-                room                : "androidx.room:room-runtime:$room_version",
-                roomCompiler        : "androidx.room:room-compiler:$room_version",
-                roomKtx             : "androidx.room:room-ktx:$room_version",
-                viewModelKtx        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+                composeActivity      : "androidx.activity:activity-compose:$compose_activity_version",
+                composeFoundation    : "androidx.compose.foundation:foundation:$compose_version",
+                composeHiltNavigation: "androidx.hilt:hilt-navigation-compose:$compose_hilt_navigation",
+                composeMaterial      : "androidx.compose.material:material:$compose_version",
+                composeIconsCore     : "androidx.compose.material:material-icons-core:$compose_version",
+                composeIconsExtended : "androidx.compose.material:material-icons-extended:$compose_version",
+                composeNavigation    : "androidx.navigation:navigation-compose:$nav_version",
+                composeViewModel     : "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel_version",
+                composeUi            : "androidx.compose.ui:ui:$compose_version",
+                composeUiTooling     : "androidx.compose.ui:ui-tooling:$compose_version",
+                hilt                 : "com.google.dagger:hilt-android:$hilt_version",
+                hiltCompiler         : "com.google.dagger:hilt-compiler:$hilt_version",
+                okHttp               : "com.squareup.okhttp3:okhttp:$okHttp_version",
+                retrofit             : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                loggingInterceptor   : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version",
+                simpleXml            : "com.squareup.retrofit2:converter-simplexml:$simple_xml_version",
+                room                 : "androidx.room:room-runtime:$room_version",
+                roomCompiler         : "androidx.room:room-compiler:$room_version",
+                roomKtx              : "androidx.room:room-ktx:$room_version",
+                viewModelKtx         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
         ]
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
