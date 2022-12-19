@@ -11,10 +11,10 @@ import javax.inject.Singleton
 @Singleton
 class LastFmAuthorizationStorage @Inject constructor(
     private val md5Algorithm: Md5Algorithm,
-    private val musicApiFactory: MusicApiFactory
+    private val musicApiFactory: MusicApiFactory<AuthApi>
 ) : AuthorizationStorage {
 
-    override suspend fun authorize(username: String, password: String) {
+    override suspend fun authorize(username: String, password: String): AuthResponse? {
         val api = musicApiFactory.create(
             AuthApi::class.java,
             MusicHttpClient.create(),
@@ -25,11 +25,10 @@ class LastFmAuthorizationStorage @Inject constructor(
 
         val codedString = md5Algorithm.encode(apiSignature)
 
-        try {
-            //Save api key to pull users info later
-            val result = api.authorize(BuildConfig.API_KEY, username, password, codedString)
+        return try {
+            api.authorize(BuildConfig.API_KEY, username, password, codedString)
         } catch (ex: Exception) {
-            println(ex.stackTrace)
+            null
         }
     }
 }
