@@ -17,12 +17,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.dkorzhueva.music.catalog.R
 import com.dkorzhueva.music.catalog.authorization.authorization_screen.AuthorizationViewModel
 
 @Composable
 fun Authorization(
-    viewModel: AuthorizationViewModel
+    viewModel: AuthorizationViewModel = hiltViewModel()
 ) {
     Column(
         modifier = Modifier
