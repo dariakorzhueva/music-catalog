@@ -2,7 +2,11 @@ package com.dkorzhueva.music.catalog.authorization.authorization_screen.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -10,10 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.dkorzhueva.music.catalog.authorization.authorization_screen.AuthorizationViewModel
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import com.dkorzhueva.music.catalog.R
-import dagger.hilt.android.AndroidEntryPoint
+import com.dkorzhueva.music.catalog.authorization.authorization_screen.AuthorizationViewModel
 
 @Composable
 fun Authorization(
@@ -28,23 +33,44 @@ fun Authorization(
     ) {
         var username by remember { mutableStateOf("") }
         OutlinedTextField(
+            label = {
+                Text(stringResource(R.string.authorization_username))
+            },
             value = username,
             onValueChange = {
                 username = it
-            },
-            label = {
-                Text(stringResource(R.string.authorization_username))
             }
         )
+
         var password by remember { mutableStateOf("") }
+        var isPasswordVisible by remember { mutableStateOf(false) }
         OutlinedTextField(
-            value = password,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
+            label = {
+                Text(stringResource(R.string.authorization_password))
+            },
             onValueChange = {
                 password = it
             },
-            label = {
-                Text(stringResource(R.string.authorization_password))
-            }
+            trailingIcon = {
+                val image =
+                    if (isPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+
+                val description =
+                    if (isPasswordVisible) stringResource(R.string.authorization_password_hidePassword) else stringResource(
+                        R.string.authorization_password_showPassword
+                    )
+
+                IconButton(
+                    onClick = { isPasswordVisible = !isPasswordVisible }
+                ) {
+                    Icon(imageVector = image, description)
+                }
+            },
+            value = password,
+            visualTransformation = getVisualTransformation(isPasswordVisible),
         )
         val roundPercent = 25
         Button(
@@ -63,4 +89,8 @@ fun Authorization(
             Text(stringResource(R.string.authorization_logIn))
         }
     }
+}
+
+private fun getVisualTransformation(isPasswordVisible: Boolean): VisualTransformation {
+    return if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
 }
